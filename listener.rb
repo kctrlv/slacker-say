@@ -2,7 +2,7 @@ require_relative 'redis-config'
 
 begin
   system('clear')
-  puts "You are listening to turingfm on #{$host}."
+  puts "You are listening to slacker-say on #{$host}."
   puts "Press Ctrl-C at any time to exit.\n"
   $redis.subscribe(:slacker) do |on|
     on.message do |channel, msg|
