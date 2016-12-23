@@ -8,8 +8,8 @@ begin
     on.message do |channel, msg|
       data = JSON.parse(msg)
       user = data['user']
-      msg = data['msg']
-      voice = data['voice']
+      msg = data['msg'].gsub(/[^0-9a-z ]/i, '')
+      voice = data['voice'].gsub(/[^0-9a-z ]/i, '')
 
       puts "[#{user}]: #{msg}"
 
