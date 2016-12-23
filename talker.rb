@@ -35,7 +35,7 @@ system('clear')
 
 loop do
   system('clear')
-  puts "You are transmitting to turingfm @ #{$host}.\nType q to stop it\n"
+  puts "You are transmitting to slacker-say @ #{$host}.\nType q to stop it\n"
   puts "Your voice is: #{@voice}"
   puts "Type [ or ] to change your voice."
   print '> '
@@ -50,6 +50,6 @@ loop do
     @voice = @voices[@voice_index]
   else
     msg = msg.strip.gsub(/[^0-9a-z ]/i, '') # strip non-alphanumeric chars from message
-    $redis.publish :turingfm, {user: @user, voice: @voice, msg: msg}.to_json unless msg.empty?
+    $redis.publish :slacker, {user: @user, voice: @voice, msg: msg}.to_json unless msg.empty?
   end
 end

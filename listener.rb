@@ -4,7 +4,7 @@ begin
   system('clear')
   puts "You are listening to turingfm on #{$host}."
   puts "Press Ctrl-C at any time to exit.\n"
-  $redis.subscribe(:turingfm) do |on|
+  $redis.subscribe(:slacker) do |on|
     on.message do |channel, msg|
       data = JSON.parse(msg)
       user = data['user']
