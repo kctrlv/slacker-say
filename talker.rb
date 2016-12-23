@@ -49,7 +49,7 @@ loop do
     @voice_index = (@voice_index + 1) % @voices.count
     @voice = @voices[@voice_index]
   else
-    msg = msg.strip
+    msg = msg.strip.gsub(/[^0-9a-z ]/i, '') # strip non-alphanumeric chars from message
     $redis.publish :turingfm, {user: @user, voice: @voice, msg: msg}.to_json unless msg.empty?
   end
 end

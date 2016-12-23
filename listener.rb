@@ -8,7 +8,7 @@ begin
     on.message do |channel, msg|
       data = JSON.parse(msg)
       user = data['user']
-      msg = data['msg'].gsub(/[^0-9a-z ]/i, '') # strip non-alphanumeric chars from message
+      msg = data['msg']
       voice = data['voice']
 
       puts "[#{user}]: #{msg}"
